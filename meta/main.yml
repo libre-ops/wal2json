@@ -1,0 +1,28 @@
+galaxy_info:
+  role_name: wal2json
+  author: Matt-Yorkley
+  description: wal2json provisioning role
+  company: libre-ops
+
+  license: GPLv3
+
+  min_ansible_version: 1.2
+
+  platforms:
+    - name: Ubuntu
+      versions:
+        - xenial
+        - bionic
+    - name: Debian
+      versions:
+        - sid
+        - buster
+
+  galaxy_tags:
+    - wal2json
+    - cdc
+    - replication
+    - datastreams
+    - debezium
+
+dependencies: []

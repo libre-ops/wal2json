@@ -1,0 +1,6 @@
+wal_level = logical
+max_wal_senders = {{ wal2json_max_wal_senders }}
+max_replication_slots = {{ wal2json_max_replication_slots }}
+{% if wal2json_set_preload_libararies %}
+shared_preload_libraries = 'wal2json'
+{% endif %}
