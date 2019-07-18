@@ -19,6 +19,12 @@ postgresql_bin_path: "/usr/lib/postgresql/{{ postgresql_version }}/bin"
 postgresql_config_path: "/etc/postgresql/{{ postgresql_version }}/main"
 ```
 
+Building from source
+--------------------
+
+To fetch wal2json from the github repo and build it from source, use: `wal2json_build_from_source: true`.
+
+
 Caution with `shared_preload_libraries`
 -------------------------------------
 

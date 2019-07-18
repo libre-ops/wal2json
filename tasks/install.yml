@@ -1,0 +1,19 @@
+---
+
+- name: add postgresql signing key
+  apt_key:
+    url: "https://www.postgresql.org/media/keys/ACCC4CF8.asc"
+  become: yes
+
+- name: add offical postgresql repo
+  apt_repository:
+    repo: "deb http://apt.postgresql.org/pub/repos/apt/ {{ ansible_distribution_release }}-pgdg main"
+    filename: pgdg
+  become: yes
+
+- name: install wal2sjon
+  apt:
+    name: "postgresql-{{ postgresql_version }}-wal2json"
+    update_cache: yes
+    cache_valid_time: 3600
+  become: yes

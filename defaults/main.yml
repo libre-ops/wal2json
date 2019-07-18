@@ -1,11 +1,13 @@
 ---
 
-wal2json_path: "/usr/local/src/wal2json/"
-wal2json_git_version: wal2json_1_0
+wal2json_build_from_source: false
 
 wal2json_max_wal_senders: 1
 wal2json_max_replication_slots: 1
 wal2json_set_preload_libararies: true
+
+wal2json_path: "/usr/local/src/wal2json/"
+wal2json_git_version: wal2json_1_0
 
 postgresql_version: 10
 postgresql_bin_path: "/usr/lib/postgresql/{{ postgresql_version }}/bin"

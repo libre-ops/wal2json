@@ -1,50 +1,12 @@
 ---
 
-- name: create wal2json dir
-  file:
-    dest: "{{ wal2json_path }}"
-    state: directory
-    owner: root
-    mode: 0700
-  become: yes
+- name: install wal2json from postgresql repo
+  include_tasks: install.yml
+  when: not wal2json_build_from_source
 
-- name: fetch wal2json
-  git:
-    repo: https://github.com/eulerto/wal2json.git
-    dest: "{{ wal2json_path }}"
-    version:  "{{ wal2json_git_version }}"
-    depth: 1
-  become: yes
-
-- name: install dependencies
-  apt:
-    name: [make, gcc, "postgresql-server-dev-{{ postgresql_version }}"]
-  become: yes
-
-- name: check module has been built
-  stat:
-    path: "/usr/lib/postgresql/{{ postgresql_version }}/lib/wal2json.so"
-  ignore_errors: yes
-  register: wal2json_module
-
-- name: build wal2json
-  make:
-    chdir: "{{ wal2json_path }}"
-  environment:
-    PATH: "$PATH:/usr/bin:/usr/local/bin:{{ postgresql_bin_path }}"
-    USE_PGXS: 1
-  become: yes
-  when: not wal2json_module.stat.exists
-
-- name: install wal2json
-  make:
-    chdir: "{{ wal2json_path }}"
-    target: install
-  environment:
-    PATH: "$PATH:/usr/bin:/usr/local/bin:{{ postgresql_bin_path }}"
-    USE_PGXS: 1
-  become: yes
-  when: not wal2json_module.stat.exists
+- name: build wal2json from source
+  include_tasks: build.yml
+  when: wal2json_build_from_source
 
 - name: ensure postgres conf.d directory exists
   file:
