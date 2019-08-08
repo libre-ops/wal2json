@@ -3,8 +3,6 @@ wal2json provisioning role
 
 This is an Ansible role for provisioning [Wal2json](https://github.com/eulerto/wal2json), a postgresql plugin for Change Data Capture that converts database changes into json diffs.
 
-See the latest Metabase docs [here.](https://metabase.com/docs/latest) 
-
 
 Defaults
 --------
@@ -44,5 +42,5 @@ Example playbook
   roles:
     - role: libre_ops.wal2json
       vars:
-        postgres_version: 11
+        postgresql_version: 11
 ```
