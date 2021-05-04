@@ -3,7 +3,7 @@
 wal2json_build_from_source: false
 
 wal2json_max_wal_senders: 10
-wal2json_max_replication_slots: 1
+wal2json_max_replication_slots: 10
 wal2json_set_preload_libraries: true
 
 wal2json_path: "/usr/local/src/wal2json/"
